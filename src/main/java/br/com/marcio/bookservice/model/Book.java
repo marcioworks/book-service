@@ -1,22 +1,36 @@
 package br.com.marcio.bookservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 180)
     private String author;
+    @Column(nullable = false, length = 250)
     private String title;
+    @Column(name = "launch_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date launchDate;
+    @Column(nullable = false)
     private Double price;
-
+    @Transient
     private String currency;
+    @Transient
     private String environment;
 
-    public Book(Long id, String author, String title, Date launchDate, Double price,  String currency, String environment) {
+    public Book(){}
+
+    public Book(Long id, String author, String title, Date launchDate, Double price, String currency, String environment) {
         this.id = id;
         this.author = author;
         this.launchDate = launchDate;

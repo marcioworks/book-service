@@ -57,7 +57,7 @@ public class BookController {
 
         var port = environment.getProperty("local.server.port");
         book.setPrice(cambio.getConvertedValue());
-        book.setEnvironment(port +" FEIGN");
+        book.setEnvironment("Book port: "+port +" Cambio port: "+cambio.getEnvironment());
 //        book.setCurrency(currency);
         return book;
     }

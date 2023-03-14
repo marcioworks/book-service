@@ -4,14 +4,19 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+resilience4j:
+  retry:
+    instances:
+      foo-bar:
+        max-attempts: 5
 spring:
   application:
     name: book-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/book-service?useTimeZone=true&serverTimezone=UTC
-    username: root
-    password: M@rcio2786
+    username:
+    password:
   jackson:
     default-property-inclusion: NON-NULL
     serialization:
@@ -26,6 +31,6 @@ spring:
   flyway:
     url: jdbc:mysql://localhost:3306/
     schemas: book-service
-    user: root
+    user:
     password:
 

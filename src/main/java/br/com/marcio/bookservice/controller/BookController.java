@@ -4,6 +4,8 @@ import br.com.marcio.bookservice.model.Book;
 import br.com.marcio.bookservice.proxy.CambioProxy;
 import br.com.marcio.bookservice.repository.BookRepository;
 import br.com.marcio.bookservice.response.Cambio;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Date;
 import java.util.HashMap;
 
+@Tag(name = "Book endpoints")
 @RestController
 @RequestMapping("book-service")
 public class BookController {
@@ -48,6 +51,7 @@ public class BookController {
 //        return book;
 //    }
 
+    @Operation(summary = "Find Book by Id")
     @GetMapping(value = "/{id}/{currency}")
     public Book findBook(@PathVariable("id") Long id,@PathVariable("currency") String currency){
 

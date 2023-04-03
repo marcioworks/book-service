@@ -1,7 +1,5 @@
 package br.com.marcio.bookservice.response;
 
-import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
